@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import MyContext from "../context";
 import { ENTER } from "../actions";
 
-const EnterBtn = ({ symbol }) => {
+const EnterBtn = ({ symbol, colSpan}) => {
   const { dispatch } = useContext(MyContext);
   const handleClickEnter = () => {
     dispatch({
@@ -10,8 +10,8 @@ const EnterBtn = ({ symbol }) => {
     });
   };
   return (
-    <td>
-      <button onClick={handleClickEnter}>{symbol}</button>
+    <td colSpan={colSpan}>
+      <button class="EnterBtn" onClick={handleClickEnter}>{symbol}</button>
     </td>
   );
 };

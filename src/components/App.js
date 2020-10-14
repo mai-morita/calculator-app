@@ -28,8 +28,10 @@ const App = () => {
           </thead>
           <tbody>
             <tr>
-              <AllClear colSpan={3} />
+              <AllClear num={"AC"} colSpan={2} /> 
+              <NumBtn num={"."} />
               <Operator symbol={"/"} />
+
             </tr>
             <tr>
               <NumBtn num={"7"} />
@@ -51,8 +53,7 @@ const App = () => {
             </tr>
             <tr>
               <NumBtn num={"0"} colSpan={2} />
-              <NumBtn num={"."} />
-              <EnterBtn symbol={"="} />
+              <EnterBtn symbol={"="} colSpan={2} />
             </tr>
           </tbody>
         </table>

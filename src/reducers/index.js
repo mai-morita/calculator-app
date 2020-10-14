@@ -12,38 +12,41 @@ const Reducer = (state, action) => {
         outputValueFlag: false,
         numBox,
         firstTouchFlag: true,
-      };
+      }
 
     case SYMBOL:
       try {
         if (state.firstTouchFlag) {
-          const outputValue = new Function("return" + state.numBox)();
-          return {
-            ...state,
-            outputValue,
-            inputValue: "",
-            outputValueFlag: true,
-            symbol: action.symbol,
-          };
-        }
+          const outputValue = new Function("return " + state.numBox)();
+          return { 
+            ...state, 
+            outputValue, 
+            inputValue: "", 
+            outputValueFlag: true, 
+            symbol: action.symbol }
+          }
       } catch (e) {
-        return state;
+           return state;
       }
+
+
     case ENTER:
       if (state.firstTouchFlag) {
-        const outputValue = new Function("return" + state.numBox)();
+        const outputValue = new Function("return " + state.numBox)();
         return {
           ...state,
           outputValue,
           inputValue: "",
           outputValueFlag: true,
-        };
+        }
       }
+
     case ALL_CLEAR:
       return Initialize;
 
     default:
       return state;
+      
   }
 };
 

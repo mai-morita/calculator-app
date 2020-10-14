@@ -10,8 +10,8 @@ const AllClear = ({ colSpan }) => {
     });
   };
   return (
-    <td>
-      <button onClick={handleClickAllClear}>AC</button>
+    <td colSpan={colSpan}>
+      <button className="ACBtn" onClick={handleClickAllClear}>AC</button>
     </td>
   );
 };
