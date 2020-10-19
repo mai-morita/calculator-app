@@ -17,14 +17,18 @@ const Reducer = (state, action) => {
     case SYMBOL:
       try {
         if (state.firstTouchFlag) {
+          // return 1 + 1 / 1
+          // new Function: () => {return 1+1}
+          //
           const outputValue = new Function("return " + state.numBox)();
           return { 
             ...state, 
             outputValue, 
             inputValue: "", 
-            outputValueFlag: true, 
-            symbol: action.symbol }
+            outputValueFlag: true,
+            symbol: action.symbol 
           }
+        }
       } catch (e) {
            return state;
       }

@@ -20,7 +20,7 @@ const App = () => {
       }}
     >
       <div className="container">
-        <table border="1" cellSpacing="0">
+        <table border="20" cellSpacing="5">
           <thead>
             <tr>
               <Result colSpan={4} id={"answerView"} />
