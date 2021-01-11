@@ -12,37 +12,41 @@ const Reducer = (state, action) => {
         outputValueFlag: false,
         numBox,
         firstTouchFlag: true,
-      }
+      };
 
     case SYMBOL:
       try {
         if (state.firstTouchFlag) {
           // return 1 + 1 / 1
           // new Function: () => {return 1+1}
-          //
+          // eslint-disable-next-line no-new-func
           const outputValue = new Function("return " + state.numBox)();
-          return { 
-            ...state, 
-            outputValue, 
-            inputValue: "", 
+          return {
+            ...state,
+            outputValue,
+            inputValue: "",
             outputValueFlag: true,
-            symbol: action.symbol 
-          }
+            symbol: action.symbol,
+          };
         }
       } catch (e) {
-           return state;
+        return state;
       }
 
-
     case ENTER:
-      if (state.firstTouchFlag) {
-        const outputValue = new Function("return " + state.numBox)();
-        return {
-          ...state,
-          outputValue,
-          inputValue: "",
-          outputValueFlag: true,
+      try {
+        if (state.firstTouchFlag) {
+          // eslint-disable-next-line no-new-func
+          const outputValue = new Function("return " + state.numBox)();
+          return {
+            ...state,
+            outputValue,
+            inputValue: "",
+            outputValueFlag: true,
+          };
         }
+      } catch (e) {
+        return state;
       }
 
     case ALL_CLEAR:
@@ -50,7 +54,6 @@ const Reducer = (state, action) => {
 
     default:
       return state;
-      
   }
 };
 
