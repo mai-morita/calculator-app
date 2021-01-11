@@ -29,25 +29,23 @@ const Reducer = (state, action) => {
             symbol: action.symbol,
           };
         }
+        return state;
       } catch (e) {
         return state;
       }
 
     case ENTER:
-      try {
-        if (state.firstTouchFlag) {
-          // eslint-disable-next-line no-new-func
-          const outputValue = new Function("return " + state.numBox)();
-          return {
-            ...state,
-            outputValue,
-            inputValue: "",
-            outputValueFlag: true,
-          };
-        }
-      } catch (e) {
-        return state;
+      if (state.firstTouchFlag) {
+        // eslint-disable-next-line no-new-func
+        const outputValue = new Function("return " + state.numBox)();
+        return {
+          ...state,
+          outputValue,
+          inputValue: "",
+          outputValueFlag: true,
+        };
       }
+      return state;
 
     case ALL_CLEAR:
       return Initialize;
